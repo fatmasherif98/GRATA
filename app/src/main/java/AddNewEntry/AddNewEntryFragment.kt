@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.android.grata.R
+import com.example.android.grata.databinding.AddNewEntryFragmentBinding
 
 class AddNewEntryFragment : Fragment() {
 
@@ -21,13 +22,12 @@ class AddNewEntryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_new_entry_fragment, container, false)
+       val binding = AddNewEntryFragmentBinding.inflate(inflater)
+        viewModel = ViewModelProviders.of(this).get(AddNewEntryViewModel::class.java)
+        binding.viewModel = viewModel
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AddNewEntryViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }
