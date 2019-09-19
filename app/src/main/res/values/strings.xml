@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_grata">About Grata</string>
     <string name="see_older_notes">See Older Notes</string>
+    <string name="added_entry">Added To Your List!</string>
 </resources>

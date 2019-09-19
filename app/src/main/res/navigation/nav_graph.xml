@@ -5,13 +5,13 @@
             app:startDestination="@id/addNewEntryFragment">
 
     <fragment android:id="@+id/addNewEntryFragment" android:name="AddNewEntry.AddNewEntryFragment"
-              android:label="add_new_entry_fragment" tools:layout="@layout/add_new_entry_fragment">
+              android:label="add new entry fragment" tools:layout="@layout/add_new_entry_fragment">
         <action android:id="@+id/action_addNewEntryFragment_to_oldEntriesListFragment"
-                app:destination="@id/oldEntriesListFragment"/>
-        <action android:id="@+id/action_addNewEntryFragment_to_aboutGrata" app:destination="@id/aboutGrata"/>
+                app:destination="@id/grata_old_entries"/>
+        <action android:id="@+id/action_addNewEntryFragment_to_aboutGrata" app:destination="@id/grata_about"/>
     </fragment>
-    <fragment android:id="@+id/aboutGrata" android:name="About.AboutGrata" android:label="fragment_about_grata"
+    <fragment android:id="@+id/grata_about" android:name="About.AboutGrata" android:label="about grata"
               tools:layout="@layout/fragment_about_grata"/>
-    <fragment android:id="@+id/oldEntriesListFragment" android:name="OldEntriesList.OldEntriesListFragment"
-              android:label="old_entries_list_fragment" tools:layout="@layout/old_entries_list_fragment"/>
+    <fragment android:id="@+id/grata_old_entries" android:name="oldEntriesList.OldEntriesListFragment"
+              android:label="old entries list" tools:layout="@layout/old_entries_list_fragment"/>
 </navigation>

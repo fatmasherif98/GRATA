@@ -10,12 +10,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+    >
 
 
         <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 app:cardElevation="10dp"
+                android:backgroundTint="@color/primaryLightColor"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
@@ -32,13 +33,12 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/current_quote"
                         android:padding="4dp"
-                        android:gravity="center"
-                        app:fontFamily="sans-serif-light"/>
+                        android:gravity="center"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <TextView
                 tools:text="Tuesday 9th of September"
-                android:text="Tuesday 9th of September"
+                android:text="@{viewModel.dateString}"
                 android:padding="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText6"
+                android:id="@+id/second_input"
                 app:layout_constraintStart_toEndOf="@+id/title_two_tv" android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/title_two_tv"/>
         <TextView
@@ -84,35 +84,35 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/title_three_tv" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp" android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/editText6"/>
+                app:layout_constraintTop_toBottomOf="@+id/second_input"/>
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText7"
+                android:id="@+id/third_input"
                 app:layout_constraintStart_toEndOf="@+id/title_three_tv" android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/title_three_tv"/>
         <Button
                 android:text="submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/button_style"
+                android:onClick="@{()->viewModel.onSubmitClicked()}"
                 android:id="@+id/button"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/button2" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/editText7" android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/third_input"/>
         <Button
                 android:text="See Your List"
-                android:background="@android:color/white"
-                android:textSize="16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/editText7"
-        />
+                android:onClick="@{() ->viewModel.onSeeOldListClicked()}"
+                android:id="@+id/button2"
+                style="@style/button_style"
+                android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/third_input"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
