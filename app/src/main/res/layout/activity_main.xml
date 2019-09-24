@@ -22,9 +22,10 @@
 
                 <ImageView
                         android:id="@+id/grata_logo"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        app:srcCompat="@drawable/logo"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/logo" android:layout_marginStart="0dp"
+                        android:tint="#795548"/>
             </androidx.appcompat.widget.Toolbar>
             <fragment
                     android:id="@+id/nav_host_fragment"
@@ -41,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
+                android:backgroundTint="@color/primaryColor"
                 app:menu="@menu/drawer_view"/>
     </androidx.drawerlayout.widget.DrawerLayout>
 

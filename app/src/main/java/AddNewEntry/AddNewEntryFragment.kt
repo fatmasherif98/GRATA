@@ -1,5 +1,6 @@
 package AddNewEntry
 
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,10 @@ import com.example.android.grata.R
 import com.example.android.grata.database.GratitudeEntry
 import com.example.android.grata.databinding.AddNewEntryFragmentBinding
 import com.google.android.material.snackbar.Snackbar
+import android.graphics.BitmapFactory
+
+
+
 
 class AddNewEntryFragment : Fragment() {
 
@@ -29,6 +34,12 @@ class AddNewEntryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+//        val icon = BitmapFactory.decodeResource(
+//            context?.getResources(),
+//            com.example.android.grata.R.drawable.background
+//        )
+
        val binding = AddNewEntryFragmentBinding.inflate(inflater)
 
         val application = requireNotNull(this.activity).application
@@ -36,6 +47,8 @@ class AddNewEntryFragment : Fragment() {
         val dataSource = GratitudeDatabase.getInstance(application).gratitudeDatabaseDao
 
         val viewModelFactory = AddNewEntryViewModelFactory(dataSource, application)
+
+//        binding.imageView.setImageBitmap(icon)
         viewModel =
             ViewModelProviders.of(
                 this, viewModelFactory).get(AddNewEntryViewModel::class.java)
@@ -67,7 +80,7 @@ class AddNewEntryFragment : Fragment() {
             if (it == true) {
                 Snackbar.make(
                     activity!!.findViewById(android.R.id.content),
-                    getString(R.string.added_entry),
+                    getString(com.example.android.grata.R.string.added_entry),
                     Snackbar.LENGTH_SHORT
                 ).show()
                 viewModel.doneShowingSnackbar()
