@@ -17,20 +17,24 @@ class AddNewEntryViewModel (val database: GratitudeEntryDao,
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-
+//sets the current date in the layout
     var dateString = formatDate(Calendar.getInstance().getTime())
 
 
 
-    lateinit var gratitudeEntry : GratitudeEntry
+     var gratitudeEntry = GratitudeEntry()
 
+    //livedata for submit button
     private var _submitClicked = MutableLiveData<Boolean>()
     val submitClicked : LiveData<Boolean>
         get() =_showSnackbarEvent
 
+// livedata for navigation
     private var _navigate = MutableLiveData<Boolean>()
     val navigate : LiveData<Boolean>
     get() = _navigate
+
+
 
     private var _showSnackbarEvent = MutableLiveData<Boolean>()
     val showSnackBarEvent : LiveData<Boolean>
@@ -60,6 +64,7 @@ class AddNewEntryViewModel (val database: GratitudeEntryDao,
     fun insertIntoDatabase(){
 Log.i("vm", "insert into database is called")
 
+        gratitudeEntry.date = dateString
         if( gratitudeEntry.firstEntry.equals(""))
             return
        uiScope.launch {

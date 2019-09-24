@@ -28,9 +28,13 @@ class AddNewEntryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
        val binding = AddNewEntryFragmentBinding.inflate(inflater)
+
         val application = requireNotNull(this.activity).application
+
         val dataSource = GratitudeDatabase.getInstance(application).gratitudeDatabaseDao
+
         val viewModelFactory = AddNewEntryViewModelFactory(dataSource, application)
         viewModel =
             ViewModelProviders.of(
@@ -39,20 +43,16 @@ class AddNewEntryFragment : Fragment() {
         binding.setLifecycleOwner(this)
 
 
+//on clicking submit button
         viewModel.submitClicked.observe(this, Observer{
             if(it == true)
             {
                 Log.i("fragment", "observer evoked")
-                var gratitudeEntry = GratitudeEntry( firstEntry = binding.firstInput.text.toString(),
-                    secondEntry = binding.secondInput.text.toString(), thirdEntry = binding.thirdInput.text.toString()
-                , date = binding.currentDateTv.text.toString() )
-                viewModel.gratitudeEntry = gratitudeEntry
                 viewModel.insertIntoDatabase()
-
                 viewModel.doneSubmitting()
             }
-
-
+        })
+//for naviagting to list of entries
         viewModel.navigate.observe( viewLifecycleOwner, Observer{
             Log.i("frag" , "before if statement")
             if( it == true){
@@ -60,11 +60,9 @@ class AddNewEntryFragment : Fragment() {
                 this.findNavController().navigate( AddNewEntryFragmentDirections.actionAddNewEntryFragmentToOldEntriesListFragment())
                 viewModel.onDoneNavigating()
             }
-
-
         })
 
-        })
+//show snackBar
         viewModel.showSnackBarEvent.observe(this, Observer {
             if (it == true) {
                 Snackbar.make(
@@ -75,6 +73,8 @@ class AddNewEntryFragment : Fragment() {
                 viewModel.doneShowingSnackbar()
             }
         })
+
+
         return binding.root
     }
 
